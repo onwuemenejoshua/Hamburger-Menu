@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Onwuemene Joshua" />
+    <title>Hamburger menu</title>
+    <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css" />
+    <link rel="stylesheet" href="index2.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="containerContact">
+      <header>
+        <nav>
+          <div class="logo"><h1>IKJ</h1></div>
+          <div class="openMenu"><i class="fa fa-bars"></i></div>
+          <div class="mainMenu">
+            <ul>
+              <li><a href="index2.html">Home</a></li>
+              <li><a href="contact.html">contact</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">project</a></li>
+            </ul>
+            <div class="closeMenu"><i class="fa fa-times"></i></div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="mainContact">
+        <form action="#" method="post">
+          <div class="form-name">
+            <label for="fname">firstname:</label>
+            <input
+              type="text"
+              name="name"
+              id="fname"
+              placeholder="firstname"
+              required
+            />
+          </div>
+          <br />
+
+          <div class="form-name">
+            <label for="lname">fullname:</label>
+            <input
+              type="text"
+              name="name"
+              id="lname"
+              placeholder="fullname"
+              required
+            />
+          </div>
+          <br />
+
+          <div class="form-name">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="example@gmail.com"
+              required
+            />
+          </div>
+          <br />
+
+          <div class="form-name">
+            <label for="password">password:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <br />
+
+          <div class="form-name">
+            <label for="password">confirm-password:</label>
+            <input
+              type="password"
+              name="confirm-password"
+              id="password"
+              required
+            />
+          </div>
+          <br />
+
+          <div class="complete">
+            <input type="submit" value="SUBMIT" />
+            <input type="reset" value="RESET" />
+          </div>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

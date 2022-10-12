@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(6, 6, 28);
+  color: white;
+}
+
+nav .logo {
+  font-size: 30px;
+  margin: 6px;
+  cursor: pointer;
+}
+
+nav .logo:hover {
+  color: coral;
+}
+
+nav .mainMenu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  z-index: 0;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #7e90a5;
+  transition: right 1s ease;
+  display: none;
+  padding-right: 150px;
+}
+
+nav .openMenu {
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 20px;
+}
+
+nav .closeMenu {
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+ul > li {
+  color: white;
+  list-style: none;
+}
+
+ul > li a {
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+ul > li a:hover {
+  color: coral;
+}
+
+#secondContainer {
+  background-color: #fdeee8;
+  padding: 20px;
+}
+
+.name {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 25px;
+}
+
+#content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.aboutMe {
+  color: #272822;
+  text-align: center;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: coral;
+}
+
+.contact {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+button a {
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.image {
+  display: none;
+}
+
+footer {
+  /* margin-top: 20px; */
+  background-color: #9795d0;
+  padding: 80px;
+}
+
+.socials {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.fa-linkedin:hover {
+  color: rgb(0, 110, 255);
+}
+
+.fa-twitter:hover {
+  color: rgb(86, 154, 243);
+}
+
+.fa-github:hover {
+  color: rgb(255, 123, 0);
+}
+
+/* ------------- CONTACT ------------- */
+
+.mainContact {
+  color: white;
+  padding-top: 50px;
+  font-family: "Times New Roman", Times, serif;
+  background-color: hsl(216, 53%, 9%);
+}
+
+form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-name {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
