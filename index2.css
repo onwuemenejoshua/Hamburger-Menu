@@ -145,7 +145,7 @@ footer {
   color: rgb(255, 123, 0);
 }
 
-/* ------------- CONTACT ------------- */
+/* ------------- STYLING FOR THE CONTACT ------------- */
 
 .mainContact {
   color: white;
@@ -164,7 +164,37 @@ form {
 
 .form-name {
   width: 80vw;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.form-name small {
+  color: #dc3545;
+}
+
+.error {
+  border-color: #dc3545;
+}
+
+.success {
+  border-color: #28a745;
+}
+
+input {
+  padding: 10px;
+}
+
+.complete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.completeness {
+  background-color: #272822;
+  color: whitesmoke;
+  /* apply a showdow box proper here */
 }

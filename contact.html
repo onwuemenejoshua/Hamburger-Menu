@@ -29,7 +29,7 @@
       </header>
 
       <main class="mainContact">
-        <form action="#" method="post">
+        <form action="#" method="post" id="details">
           <div class="form-name">
             <label for="fname">firstname:</label>
             <input
@@ -37,8 +37,10 @@
               name="name"
               id="fname"
               placeholder="firstname"
+              autocomplete="off"
               required
             />
+            <small></small>
           </div>
           <br />
 
@@ -49,8 +51,10 @@
               name="name"
               id="lname"
               placeholder="fullname"
+              autocomplete="off"
               required
             />
+            <small></small>
           </div>
           <br />
 
@@ -61,14 +65,23 @@
               name="email"
               id="email"
               placeholder="example@gmail.com"
+              autocomplete="off"
               required
             />
+            <small></small>
           </div>
           <br />
 
           <div class="form-name">
             <label for="password">password:</label>
-            <input type="password" name="password" id="password" required />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="off"
+              required
+            />
+            <small></small>
           </div>
           <br />
 
@@ -77,15 +90,17 @@
             <input
               type="password"
               name="confirm-password"
-              id="password"
+              id="confirmPassword"
+              autocomplete="off"
               required
             />
+            <small></small>
           </div>
           <br />
 
           <div class="complete">
-            <input type="submit" value="SUBMIT" />
-            <input type="reset" value="RESET" />
+            <input type="submit" value="SUBMIT" class="completeness" />
+            <input type="reset" value="RESET" class="completeness" />
           </div>
         </form>
       </main>
