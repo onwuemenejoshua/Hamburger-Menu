@@ -22,62 +22,6 @@ function close() {
 
 // FOR THE FORM VALIDATION.
 
-details.addEventListener("submit", (e) => {
-  //this means prevent the form from submitting.
-  e.preventDefault();
-});
-
-// Return true if the input argument is empty
-const isRequired = (value) => (value === "" ? false : true);
-
-// // the following isBetween return false if the length argument is not between the min and max value
-
-// const isBetween = (length, min, max) => length< min || length > max ? false: true;
-
-// to check if an email is valid, we will use a regular expression.
-const isEmailValid = (email) => {
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
-};
-
-//to check if a password is secure. which match a specified pattern, you'll use a regular expression.
-
-const isPasswordSecure = (password) => {
-  const re = new RegExp(
-    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-  );
-  return re.test(password);
-};
-
-//the "showError() function" highlights the border of the input field and displays an error message if the input field is invalid.
-
-const showError = (input, message) => {
-  //get the form-name element i.e the parent element of the input field
-  const formName = input.parentElement;
-
-  //add the error class i.e remove the success class and the the error class to the form field element.
-  formName.classList.remove("success");
-  formName.classList.add("error");
-
-  //show the error message. i.e set the error message to its textContent property of the small element
-  const error = formName.querySelector("small");
-  error.textContent = message;
-};
-
-const showSuccess = (input) => {
-  //get the form field element
-  const formName = input.parentElement;
-
-  //remove the error class
-  formName.classList.remove("error");
-  formName.classList.add("success");
-
-  //hide the error message
-  const error = formName.querySelector("small");
-  error.textContent = ""; //here it textContent of the error message is set to blank
-};
-
 //VALIDATION OF THE EMAIL FIELD
 
 //it returns true if the email is provided and valid. it uses the isRequired() and isEmailValid() functions for checking. and it used the showError() and showSuccess() function to provide feedback in case of error and success.
@@ -125,7 +69,7 @@ const checkConfirmPassword = () => {
 
   if (!isRequired(confirmPassword)) {
     showError(confirmPasswordEl, "please enter the password again");
-  } else if (password !== confirmPasswordEl) {
+  } else if (password !== confirmPassword) {
     showError(confirmPasswordEl, "confirm password does not match");
   } else {
     showSuccess(confirmPasswordEl);
@@ -134,4 +78,103 @@ const checkConfirmPassword = () => {
   return valid;
 };
 
-//MODIFYING THE SUBMIT EVENT HANDLER
+// to check if an email is valid, we will use a regular expression.
+
+const isEmailValid = (email) => {
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+};
+
+//to check if a password is secure. which match a specified pattern, you'll use a regular expression.
+
+const isPasswordSecure = (password) => {
+  const re = new RegExp(
+    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+  );
+  return re.test(password);
+};
+
+// Return true if the input argument is empty
+const isRequired = (value) => (value === "" ? false : true);
+
+//the "showError() function" highlights the border of the input field and displays an error message if the input field is invalid.
+
+const showError = (input, message) => {
+  //get the form-name element i.e the parent element of the input field
+  const formName = input.parentElement;
+
+  //add the error class i.e remove the success class and the the error class to the form field element.
+  formName.classList.remove("success");
+  formName.classList.add("error");
+
+  //show the error message. i.e set the error message to its textContent property of the small element
+  const error = formName.querySelector("small");
+  error.textContent = message;
+};
+
+const showSuccess = (input) => {
+  //get the form field element
+  const formName = input.parentElement;
+
+  //remove the error class
+  formName.classList.remove("error");
+  formName.classList.add("success");
+
+  //hide the error message
+  const error = formName.querySelector("small");
+  error.textContent = ""; //here it textContent of the error message is set to blank
+};
+
+//MODIFYING THE SUBMIT EVENT HANDLER;
+
+details.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  //validate forms
+  let isEmailValid = checkEmail(),
+    isPasswordValid = checkPassword(),
+    isConfirmPasswordValid = checkConfirmPassword();
+
+  //the && operator is used to determine if the form is valid. the frm is valid if all the field are valid.
+  let isFormValid = isEmailValid && isPasswordValid && isConfirmPasswordValid;
+
+  //submit to the server if the form is valid
+  if (isFormValid) {
+  }
+});
+
+//the debouncing techniques is basically to wait for the user to pause his/her typingfor a small amount of time before validating the input.
+
+const debounce = (fn, delay = 500) => {
+  let timeoutId;
+  return (...args) => {
+    // cancel the previous timer
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    // setup a new timer
+    timeoutId = setTimeout(() => {
+      fn.apply(null, args);
+    }, delay);
+  };
+};
+
+//this is used to instant signup. i.e  we are waiting for a small amount of time befor validating the form, not submiting it before we validate
+
+details.addEventListener(
+  "input",
+  debounce(function (e) {
+    switch (e.target.id) {
+      case "email":
+        checkEmail();
+        break;
+      case "password":
+        checkPassword();
+        break;
+      case "confirm-password":
+        checkConfirmPassword();
+        break;
+    }
+  })
+);

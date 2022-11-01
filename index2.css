@@ -174,6 +174,10 @@ form {
   color: #dc3545;
 }
 
+.form-name input:focus {
+  outline: none;
+}
+
 .error {
   border-color: #dc3545;
 }
@@ -196,5 +200,4 @@ input {
 .completeness {
   background-color: #272822;
   color: whitesmoke;
-  /* apply a showdow box proper here */
 }
